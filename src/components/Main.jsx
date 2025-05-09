@@ -13,13 +13,23 @@ const Main = () => {
         setArticolo('')
     }
 
+    const handleRemove = (index) => {
+        articoliIniziali.splice(index, 1)
+        setArticoliIniziali([...articoliIniziali])
+    }
+
     return (
         <div>
             <div className="container">
                 <h1 className="title">Lista Articoli</h1>
                 <ul className="list-group">
                     {articoliIniziali.map((art, i) => {
-                        return <li className="list-item" key={i}>{art}</li>
+                        return (
+                            <li className="list-item" key={i}>
+                                <i className="fa-solid fa-trash" onClick={() => handleRemove(i)}></i>
+                                {art}
+                            </li>
+                        )
                     })}
                 </ul>
 
